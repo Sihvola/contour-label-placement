@@ -1,0 +1,10 @@
+# Direct imports; verified with Python 3.10.11 on Windows.
+# These are release-test versions, not a claim about the original workstation.
+geopandas==0.14.4
+pyogrio==0.12.1
+shapely==2.1.2
+rasterio==1.4.4
+pyproj==3.7.1
+pandas==2.3.3
+numpy==2.2.6
+tqdm==4.70.1
