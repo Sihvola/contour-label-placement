@@ -6,6 +6,18 @@
 
 仓库只包含源码、占位配置和合成几何测试，**不包含北京市实际生产数据**。用户需要自行提供符合要求的数据，并确认数据及代码的使用、上传权限。
 
+## 效果示意：候选点 → 最终注记
+
+下图使用程序构造的 5 条等高线，调用当前稳定版核心函数，得到 **450 个几何合格候选点 → 5 个正式注记点**。颜色和字号仅用于说明，文字适当放大；这不是实际地形、生产结果或 ArcMap 截图。未使用 DEM。
+
+![合成等高线候选点与最终高程注记对比](docs/images/candidates-to-labels.svg)
+
+第二张图放大其中的 150 m 注记，展示实际计算的基线旋转角、字头方位和高侧。最终文字字头朝高侧，并通过北向角约束。
+
+![合成等高线最终注记的高侧与方向属性](docs/images/label-orientation.svg)
+
+安装项目依赖后，在项目根目录执行 `python examples/make_synthetic_preview.py` 可重新生成这两张 SVG；无需真实 GDB、DEM 或额外绘图库。
+
 ## 主要能力
 
 - 支持 `index_only`（计曲线）、`all`（全部等高线）、`both`（一次分析，同时输出主图层和计曲线子集）。各模式均使用全部分析等高线作为地形证据。
@@ -27,10 +39,14 @@ contour-label-placement/
   README.md
   config/config.example.py
   examples/README.md
+  examples/make_synthetic_preview.py
   tests/test_core.py
   tests/test_config.py
   tests/test_workflow.py
   docs/RELEASE_AUDIT.md
+  docs/PUBLIC_RELEASE_AUDIT.md
+  docs/RELEASE_NOTES_v0.1.0.md
+  docs/images/
 ```
 
 本地配置 `config/config.local.py`、自备 `data/` 和运行结果 `outputs/` 均不提交。
@@ -191,3 +207,5 @@ GDB 同目录还会写入 `OBJE_CODE_index_contour_diagnostic.csv`、`contour_la
 ## 数据隐私与首次上传
 
 仓库不包含北京市实际生产数据，用户需要自行提供符合要求的数据。默认忽略本地配置、GIS 数据、CSV、日志、缓存和输出目录；发布前仍应审查 Git 暂存区。首次远程仓库应为 **Private**，并在人工确认文件清单与审查结果后才 push。没有添加开源许可证；若要公开并允许他人使用，请由权利人确认授权并选择许可证。
+
+公开前请阅读 [安全审计](docs/PUBLIC_RELEASE_AUDIT.md)：旧提交元数据包含个人联系邮箱，新提交使用 GitHub noreply 邮箱并不能清除旧历史。本次 `v0.1.0` Release 继续保存在 Private 仓库，不表示已批准公开。

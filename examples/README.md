@@ -2,6 +2,20 @@
 
 本仓库不分发真实 GIS 数据。`tests/test_core.py` 在内存中构造直线、闭合线、相邻不同高程线和矩形图幅，不依赖真实 GDB 或 DEM。
 
+## README 示意图
+
+从项目根目录运行：
+
+```powershell
+python examples/make_synthetic_preview.py
+```
+
+脚本仅使用项目现有依赖，在内存构造 5 条合成等高线和一个矩形图幅，调用稳定版核心函数，生成 `docs/images/candidates-to-labels.svg` 和 `docs/images/label-orientation.svg`。得到 450 个几何合格候选点、5 个最终注记点与 445 条质检记录；未读取真实文件或 DEM，未改变算法或默认参数。SVG 不含脚本、外部图片或字体引用。
+
+这是邻近等高线证据、方向与去密流程的可复现示意，不替代完整 FileGDB 流程和 ArcMap 制图验收。不要把真实地图截图替换进这些示例而未经脱敏审查。
+
+## 自备输入
+
 运行完整流程前，请自行准备：
 
 1. 等高线 FileGDB：线几何、米制投影坐标系，含可转为数值的高程字段和分类代码字段（默认 `ELEV`、`OBJE_CODE`）。

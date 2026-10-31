@@ -12,7 +12,7 @@ htmlcov/
 build/
 dist/
 *.egg-info/
-*.log
+*.[lL][oO][gG]
 *.tmp
 *.bak
 Thumbs.db
@@ -53,8 +53,22 @@ config/*.py
 *.dem
 *.las
 *.laz
-*.geojson
-*.csv
+*.[gG][eE][oO][jJ][sS][oO][nN]
+*.[gG][eE][oO][jJ][sS][oO][nN][lL]
+*.[kK][mM][lL]
+*.[kK][mM][zZ]
+*.[gG][mM][lL]
+*.[mM][dD][bB]
+*.[sS][qQ][lL][iI][tT][eE]
+*.[sS][qQ][lL][iI][tT][eE]3
+*.[cC][sS][vV]
+*.[tT][sS][vV]
+# Packed production data and result deliveries
+*.[zZ][iI][pP]
+*.[rR][aA][rR]
+*.7[zZ]
+*.[tT][aA][rR]
+*.[gG][zZ]
 data/
 outputs/
 results/
